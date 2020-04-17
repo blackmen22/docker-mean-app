@@ -1,0 +1,4 @@
+tsconfig - No inputs were found in config file '/home/eliotte/Music/docker-mean-app/docker-app/server/src/tsconfig.json'. Specified 'include' paths were '["src/**/*"]' and 'exclude' paths were '["node_modules"]'.
+zmieniłam na scieżkę ./src/* - taki sam błąd.
+
+do poprawy 'mongodb://lostalhost/express-server:dev'; tutaj będzie obraz ze strony dockera mongoodb 
