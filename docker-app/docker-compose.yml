@@ -1,0 +1,36 @@
+version: '2' # specify docker-compose version
+
+services:
+  web-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: express-server:dev
+    volumes:
+      - ./src:/home/node/app/src
+      - ./nodemon.json:home/nodemon.json # czy tu jest ok ? bo home to server ??
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+      - "9229:9229"
+    command: npm start
+    
+
+  angular: # my front
+    build: angular-client 
+    ports:
+      - "4200:4200" 
+    volumes:
+      - ./angular-client:/app
+
+  express: #server.js
+    build: express-server #image from docker 
+      - "3000:3000" 
+    links:
+      - database
+
+  database: 
+    image: mongo #mongoose
+    ports:
+      - "27017:27017" 
